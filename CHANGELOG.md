@@ -1,3 +1,11 @@
+## 0.1.2 — 2026-06-02
+
+### Fixed
+
+- **Credential token URL was a literal `={{ $self... }}` expression string.** n8n's OAuth2 token-exchange helper does not evaluate `$self` expressions against credential defaults at OAuth time — it reads them as raw strings. So saved credentials had `accessTokenUrl` set to the literal expression text, and token requests POSTed to nonsense URLs and 4xx'd. The credential's "test" button failed accordingly.
+- **`accessTokenUrl` is now a visible field** with a regional US default. If your `API URL` is EU/AU, also change the token URL host below to match. (Two visible URL fields instead of one — small UX cost for a credential that actually works.)
+- Hardened the credential-test `baseURL` expression against missing `apiUrl` to surface a clearer error instead of a silent template failure.
+
 # Changelog
 
 All notable changes to `n8n-nodes-datto-rmm-ext` will be documented here.

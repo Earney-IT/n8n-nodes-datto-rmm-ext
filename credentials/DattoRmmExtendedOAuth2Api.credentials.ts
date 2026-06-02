@@ -6,16 +6,19 @@ import type {
 } from 'n8n-workflow';
 
 /**
- * Datto RMM OAuth2 credential — extends n8n's built-in `oAuth2Api` so the user
- * sees a small surface (API URL + API Key + API Secret) but the credential
- * works with both this node AND raw HTTP Request nodes (because n8n's OAuth2
+ * Datto RMM OAuth2 credential — extends n8n's built-in `oAuth2Api` so the
+ * credential works with both this node AND raw HTTP Request nodes (n8n's OAuth2
  * helper handles token fetch + automatic refresh).
  *
- * Static OAuth bits the user never has to know about:
+ * The token URL is a visible field with a regional default, because n8n's
+ * OAuth2 token-exchange helper does NOT evaluate `={{ $self... }}` expressions
+ * against credential defaults (only literal strings are honoured). It auto-fills
+ * to the US region; switch the host for EU/AU.
+ *
+ * Static OAuth bits hidden from the user:
  *   - grantType   = passwordCredentials (Datto's "API user" pattern)
  *   - clientId    = "public-client"     (hardcoded by Datto)
  *   - clientSecret= "public"             (hardcoded by Datto)
- *   - accessTokenUrl computed from `apiUrl` + "/auth/oauth/token"
  *   - authentication = "header"
  *
  * Reference: https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm
@@ -39,8 +42,17 @@ export class DattoRmmExtendedOAuth2Api implements ICredentialType {
 			default: 'https://pinotage-api.centrastage.net',
 			required: true,
 			description:
-				'Your Datto RMM regional API base URL. US: https://pinotage-api.centrastage.net, EU: https://merlot-api.centrastage.net, AU: https://syrah-api.centrastage.net, etc. Trailing slash is stripped.',
+				'Your Datto RMM regional API base URL. US: https://pinotage-api.centrastage.net, EU: https://merlot-api.centrastage.net, AU: https://syrah-api.centrastage.net, etc. Trailing slash is stripped. If you change this, also update Access Token URL below to the same host.',
 			placeholder: 'https://pinotage-api.centrastage.net',
+		},
+		{
+			displayName: 'Access Token URL',
+			name: 'accessTokenUrl',
+			type: 'string',
+			default: 'https://pinotage-api.centrastage.net/auth/oauth/token',
+			required: true,
+			description:
+				'OAuth2 token endpoint. Defaults to the US region. If your API URL above is EU/AU, change the host here to match (e.g. https://merlot-api.centrastage.net/auth/oauth/token).',
 		},
 		{
 			displayName: 'API Key',
@@ -68,13 +80,6 @@ export class DattoRmmExtendedOAuth2Api implements ICredentialType {
 			name: 'grantType',
 			type: 'hidden',
 			default: 'passwordCredentials',
-		},
-		{
-			displayName: 'Access Token URL',
-			name: 'accessTokenUrl',
-			type: 'hidden',
-			// Computed from apiUrl. n8n credential expressions support `$self["fieldName"]`.
-			default: '={{ $self["apiUrl"].replace(/\\/+$/, "") + "/auth/oauth/token" }}',
 		},
 		{
 			displayName: 'Client ID',
@@ -119,7 +124,7 @@ export class DattoRmmExtendedOAuth2Api implements ICredentialType {
 	// Credential test: hit /api/v2/account — cheapest authenticated GET.
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: '={{ $credentials.apiUrl.replace(/\\/+$/, "") }}',
+			baseURL: '={{ ($credentials.apiUrl || "").replace(/\\/+$/, "") }}',
 			url: '/api/v2/account',
 			method: 'GET',
 		},
