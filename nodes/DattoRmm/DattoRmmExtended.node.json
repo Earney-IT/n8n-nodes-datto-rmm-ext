@@ -1,0 +1,21 @@
+{
+	"node": "n8n-nodes-datto-rmm-extended.dattoRmmExtended",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["IT Ops"],
+	"subcategories": {
+		"IT Ops": ["RMM", "Endpoint Management"]
+	},
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://rmm.datto.com/help/en/Content/2SETUP/APIv2.htm"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended"
+			}
+		]
+	}
+}

@@ -1,0 +1,8 @@
+dist
+node_modules
+.rc-test.env
+.env
+.npmrc
+.openapi-scratch.*
+.live-*.ts
+*.log

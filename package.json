@@ -1,0 +1,65 @@
+{
+	"name": "n8n-nodes-datto-rmm-extended",
+	"version": "0.1.0",
+	"description": "Datto RMM (Kaseya) node for n8n — sites, site variables, devices, alerts, jobs, components, audit. AI-agent ready, full v2 API coverage, OAuth2 password-grant via standard n8n credential.",
+	"license": "MIT",
+	"homepage": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended",
+	"keywords": [
+		"n8n-community-node-package",
+		"datto",
+		"datto-rmm",
+		"kaseya",
+		"rmm",
+		"msp",
+		"endpoint-management",
+		"site-variables"
+	],
+	"author": {
+		"name": "Tristen Rice",
+		"email": "support@earneyit.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended/issues"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"test": "jest",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node build && npm test && n8n-node lint"
+	},
+	"files": [
+		"dist",
+		"README.md",
+		"CHANGELOG.md"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": false,
+		"credentials": [
+			"dist/credentials/DattoRmmExtendedOAuth2Api.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/DattoRmm/DattoRmmExtended.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"@types/jest": "^30.0.0",
+		"jest": "^30.4.2",
+		"prettier": "3.8.3",
+		"release-it": "20.0.1",
+		"ts-jest": "^29.4.11",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
