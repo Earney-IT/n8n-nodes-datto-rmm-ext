@@ -16,7 +16,7 @@ import { getComponents, getSites } from './shared/methods';
 // community-package loader can resolve `exports.DattoRmmExtended` at load time.
 export class DattoRmmExtended implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Datto RMM',
+		displayName: 'Datto RMM (Extended)',
 		name: 'dattoRmmExtended',
 		icon: 'file:datto-rmm.svg',
 		group: ['transform'],
@@ -25,7 +25,7 @@ export class DattoRmmExtended implements INodeType {
 		description:
 			'Manage Datto RMM (Kaseya): sites, site variables, devices, alerts, components, jobs, audit. Includes idempotent site-variable upsert. AI-agent ready.',
 		defaults: {
-			name: 'Datto RMM',
+			name: 'Datto RMM (Extended)',
 		},
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
