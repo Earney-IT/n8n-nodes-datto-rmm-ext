@@ -31,7 +31,7 @@ test('siteVariable.getAll fetches list endpoint and slices to limit', async () =
   });
   const rows = await run(ctx);
   expect(rows).toHaveLength(2);
-  expect((ctx as Ctx)._calls[0].url).toMatch(/site\/site-1\/variable$/);
+  expect((ctx as Ctx)._calls[0].url).toMatch(/site\/site-1\/variables$/);
 });
 
 test('siteVariable.create posts body and returns object', async () => {
@@ -46,7 +46,7 @@ test('siteVariable.create posts body and returns object', async () => {
   expect(rows).toEqual([{ id: 42, name: 'X', value: 'hello' }]);
   const c = (ctx as Ctx)._calls[0];
   expect(c.method).toBe('PUT');
-  expect(c.url).toMatch(/\/api\/v2\/site\/site-1\/variable$/);
+  expect(c.url).toMatch(/\/api\/v2\/site\/site-1\/variables$/);
   expect(c.body).toEqual({ name: 'X', value: 'hello' });
 });
 
@@ -100,7 +100,7 @@ test('siteVariable.upsert CREATES when absent', async () => {
   expect(rows[0].action).toBe('created');
   const c2 = (ctx as Ctx)._calls[1];
   expect(c2.method).toBe('PUT');
-  expect(c2.url).toMatch(/\/site\/site-1\/variable$/);
+  expect(c2.url).toMatch(/\/site\/site-1\/variables$/);
 });
 
 test('siteVariable.delete returns success envelope', async () => {
