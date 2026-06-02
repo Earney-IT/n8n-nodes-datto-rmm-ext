@@ -1,3 +1,10 @@
+## 0.1.5 — 2026-06-02
+
+### Fixed
+
+- **Site Variable list endpoint was singular** (`/site/{uid}/variable`) but Datto's API serves the list at the **plural** endpoint (`/site/{uid}/variables`). The singular path exists but only accepts PUT (create) / POST (update via ID) / DELETE (via ID) — GET returns "Method not allowed". This broke Site Variable → Get Many AND the Upsert special handler's existence check.
+- Fixed: GET list now hits `/api/v2/site/{siteUid}/variables`. Single Get / Create / Update / Delete keep using the singular path with the variable ID. Verified against the panoptic Datto RMM node which uses the same plural list URL.
+
 ## 0.1.4 — 2026-06-02
 
 ### Breaking

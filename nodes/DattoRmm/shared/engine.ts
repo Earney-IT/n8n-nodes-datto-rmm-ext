@@ -120,7 +120,7 @@ async function upsertSiteVariable(
 	const hidden = body.hidden === true;
 	const list = (await dattoApiRequestAllItems.call(
 		this,
-		`/api/v2/site/${encodeURIComponent(siteUid)}/variable`,
+		`/api/v2/site/${encodeURIComponent(siteUid)}/variables`,
 		'variables',
 	)) as Array<{ id?: number | string; name?: string; value?: string }>;
 	const existing = list.find((v) => v && v.name === name);
@@ -140,7 +140,7 @@ async function upsertSiteVariable(
 	const created = (await dattoApiRequest.call(
 		this,
 		'PUT',
-		`/api/v2/site/${encodeURIComponent(siteUid)}/variable`,
+		`/api/v2/site/${encodeURIComponent(siteUid)}/variables`,
 		{ name, value, hidden },
 	)) as IDataObject;
 	return { action: 'created', name, value, response: created };
