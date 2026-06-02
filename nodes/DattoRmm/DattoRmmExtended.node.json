@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-datto-rmm-extended.dattoRmmExtended",
+	"node": "n8n-nodes-datto-rmm-ext.dattoRmmExtended",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["IT Ops"],
@@ -14,7 +14,7 @@
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended"
+				"url": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-ext"
 			}
 		]
 	}

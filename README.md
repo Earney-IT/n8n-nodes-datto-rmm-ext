@@ -1,4 +1,4 @@
-# n8n-nodes-datto-rmm-extended
+# n8n-nodes-datto-rmm-ext
 
 A modern [n8n](https://n8n.io) community node for [Datto RMM](https://www.datto.com/products/rmm/) (Kaseya). Full v2 API coverage across sites, site variables, devices, alerts, components, jobs, audit. **AI-agent ready** (`usableAsTool: true`) with action-oriented operation descriptions, and an **idempotent site-variable upsert** that does the create-or-update by name in one operation.
 
@@ -7,7 +7,7 @@ Built sole-authored by Tristen Rice for Earney IT.
 ## Installation
 
 ```
-n8n-nodes-datto-rmm-extended
+n8n-nodes-datto-rmm-ext
 ```
 
 In n8n: **Settings → Community Nodes → Install → paste the package name**.

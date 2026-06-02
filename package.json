@@ -1,9 +1,9 @@
 {
-	"name": "n8n-nodes-datto-rmm-extended",
+	"name": "n8n-nodes-datto-rmm-ext",
 	"version": "0.1.0",
-	"description": "Datto RMM (Kaseya) node for n8n — sites, site variables, devices, alerts, jobs, components, audit. AI-agent ready, full v2 API coverage, OAuth2 password-grant via standard n8n credential.",
+	"description": "Datto RMM (Kaseya) node for n8n \u2014 sites, site variables, devices, alerts, jobs, components, audit. AI-agent ready, full v2 API coverage, OAuth2 password-grant via standard n8n credential.",
 	"license": "MIT",
-	"homepage": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended",
+	"homepage": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-ext",
 	"keywords": [
 		"n8n-community-node-package",
 		"datto",
@@ -20,10 +20,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended.git"
+		"url": "git+https://github.com/Earney-IT/n8n-nodes-datto-rmm-ext.git"
 	},
 	"bugs": {
-		"url": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-extended/issues"
+		"url": "https://github.com/Earney-IT/n8n-nodes-datto-rmm-ext/issues"
 	},
 	"scripts": {
 		"build": "n8n-node build",

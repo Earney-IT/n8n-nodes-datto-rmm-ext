@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `n8n-nodes-datto-rmm-extended` will be documented here.
+All notable changes to `n8n-nodes-datto-rmm-ext` will be documented here.
 
 ## 0.1.0 — 2026-06-02
 
