@@ -38,7 +38,7 @@ test('siteVariable.create posts body and returns object', async () => {
   const ctx = makeCtx({
     params: {
       resource: 'siteVariable', operation: 'create',
-      siteUid: 'site-1', name: 'X', value: 'hello', hidden: false, additionalFields: {},
+      siteUid: 'site-1', name: 'X', value: 'hello', masked: false, additionalFields: {},
     },
     httpResponses: [{ id: 42, name: 'X', value: 'hello' }],
   });
@@ -82,7 +82,7 @@ test('siteVariable.upsert UPDATES when value differs', async () => {
   const c2 = (ctx as Ctx)._calls[1];
   expect(c2.method).toBe('POST');
   expect(c2.url).toMatch(/variable\/7$/);
-  expect(c2.body).toEqual({ name: 'COMPANY', value: 'Acme Inc', hidden: false });
+  expect(c2.body).toEqual({ name: 'COMPANY', value: 'Acme Inc', masked: false });
 });
 
 test('siteVariable.upsert CREATES when absent', async () => {

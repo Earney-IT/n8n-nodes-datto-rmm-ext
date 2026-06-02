@@ -117,7 +117,7 @@ async function upsertSiteVariable(
 ): Promise<IDataObject> {
 	const name = String(body.name);
 	const value = body.value == null ? '' : String(body.value);
-	const hidden = body.hidden === true;
+	const masked = body.masked === true;
 	const list = (await dattoApiRequestAllItems.call(
 		this,
 		`/api/v2/site/${encodeURIComponent(siteUid)}/variables`,
@@ -133,7 +133,7 @@ async function upsertSiteVariable(
 			this,
 			'POST',
 			`/api/v2/site/${encodeURIComponent(siteUid)}/variable/${encodeURIComponent(String(existing.id))}`,
-			{ name, value, hidden },
+			{ name, value, masked },
 		)) as IDataObject;
 		return { action: 'updated', name, value, id: existing.id, response: updated };
 	}
@@ -141,7 +141,7 @@ async function upsertSiteVariable(
 		this,
 		'PUT',
 		`/api/v2/site/${encodeURIComponent(siteUid)}/variable`,
-		{ name, value, hidden },
+		{ name, value, masked },
 	)) as IDataObject;
 	return { action: 'created', name, value, response: created };
 }

@@ -64,8 +64,8 @@ export const accountVariable: ResourceDescriptor = {
 					description: 'Variable value (up to 20,000 characters)',
 				},
 				{
-					displayName: 'Hidden',
-					name: 'hidden',
+					displayName: 'Masked (Hidden in UI)',
+					name: 'masked',
 					type: 'boolean',
 					in: 'body',
 					default: false,
@@ -88,8 +88,8 @@ export const accountVariable: ResourceDescriptor = {
 				{ displayName: 'Value', name: 'value', type: 'string',
 																																											default: '', in: 'body', description: 'New value' },
 				{
-					displayName: 'Hidden',
-					name: 'hidden',
+					displayName: 'Masked (Hidden in UI)',
+					name: 'masked',
 					type: 'boolean',
 					in: 'body',
 					default: false,

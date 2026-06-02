@@ -49,5 +49,5 @@ test('boolean hidden field is in collection for siteVariable.create', () => {
   const af = byName('additionalFields').find((p) => shows(p, 'siteVariable', 'create'));
   expect(af).toBeDefined();
   const opts = (af!.options as INodeProperties[]).map((o) => o.name);
-  expect(opts).toContain('hidden');
+  expect(opts).toContain('masked');
 });

@@ -76,8 +76,8 @@ export const siteVariable: ResourceDescriptor = {
 					description: 'Variable value (up to 20,000 characters)',
 				},
 				{
-					displayName: 'Hidden',
-					name: 'hidden',
+					displayName: 'Masked (Hidden in UI)',
+					name: 'masked',
 					type: 'boolean',
 					in: 'body',
 					default: false,
@@ -112,8 +112,8 @@ export const siteVariable: ResourceDescriptor = {
 					description: 'New value (up to 20,000 characters)',
 				},
 				{
-					displayName: 'Hidden',
-					name: 'hidden',
+					displayName: 'Masked (Hidden in UI)',
+					name: 'masked',
 					type: 'boolean',
 					in: 'body',
 					default: false,
@@ -160,8 +160,8 @@ export const siteVariable: ResourceDescriptor = {
 					description: 'Desired variable value',
 				},
 				{
-					displayName: 'Hidden',
-					name: 'hidden',
+					displayName: 'Masked (Hidden in UI)',
+					name: 'masked',
 					type: 'boolean',
 					in: 'body',
 					default: false,

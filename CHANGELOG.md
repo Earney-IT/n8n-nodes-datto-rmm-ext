@@ -1,3 +1,13 @@
+## 0.1.7 — 2026-06-02
+
+### Fixed
+
+- **Body field name for masking was wrong.** Datto's OpenAPI spec (`Variable Creation Request` / `Variable Update Request`) uses `masked` for the boolean that hides a variable value in the UI. I was sending `hidden`. End-to-end test showed only the first of seven sequential PUTs actually persisted — symptom of Datto rejecting/dropping the malformed body silently after the first write. The user-facing field is renamed to **"Masked (Hidden in UI)"** but functions identically.
+
+### Breaking (field rename)
+
+- The optional body field on Site Variable / Account Variable Create/Update/Upsert was `hidden`; it is now `masked`. If you had a workflow setting it via Additional Fields, update the field name. The UI label is now "Masked (Hidden in UI)".
+
 ## 0.1.6 — 2026-06-02
 
 ### Fixed
