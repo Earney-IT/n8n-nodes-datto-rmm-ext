@@ -74,31 +74,48 @@ export class DattoRmmExtendedOAuth2Api implements ICredentialType {
 				'Datto RMM API user secret key. Generated alongside the API Key. Treat as a password.',
 		},
 
-		// --- Inherited OAuth2 fields pre-filled for the Datto password-grant flow ---
+		// --- OAuth2 fields. These MUST be visible (not hidden) — when extending
+		//     oAuth2Api, hidden field defaults are NOT persisted on credential save,
+		//     so n8n's OAuth helper has no grantType / clientId / clientSecret at
+		//     token-fetch time and reports "Unable to sign without access token".
+		//     We default them to the values Datto requires — you should not change
+		//     them.
 		{
 			displayName: 'Grant Type',
 			name: 'grantType',
-			type: 'hidden',
+			type: 'options',
 			default: 'passwordCredentials',
+			required: true,
+			description: 'Datto RMM uses Password Credentials grant. Do not change.',
+			options: [
+				{ name: 'Password Credentials (Datto default)', value: 'passwordCredentials' },
+				{ name: 'Authorization Code', value: 'authorizationCode' },
+				{ name: 'Client Credentials', value: 'clientCredentials' },
+			],
 		},
 		{
 			displayName: 'Client ID',
 			name: 'clientId',
-			type: 'hidden',
+			type: 'string',
 			default: 'public-client',
+			required: true,
+			description: 'Hardcoded by Datto — do not change.',
 		},
 		{
 			displayName: 'Client Secret',
 			name: 'clientSecret',
-			type: 'hidden',
+			type: 'string',
 			typeOptions: { password: true },
 			default: 'public',
+			required: true,
+			description: 'Hardcoded by Datto — do not change.',
 		},
 		{
 			displayName: 'Scope',
 			name: 'scope',
-			type: 'hidden',
+			type: 'string',
 			default: '',
+			description: 'Datto requires no scope. Leave empty.',
 		},
 		{
 			displayName: 'Auth URI Query Parameters',
@@ -109,8 +126,14 @@ export class DattoRmmExtendedOAuth2Api implements ICredentialType {
 		{
 			displayName: 'Authentication',
 			name: 'authentication',
-			type: 'hidden',
+			type: 'options',
 			default: 'header',
+			required: true,
+			description: 'How to send client credentials to the token URL. Datto wants header (HTTP Basic). Do not change.',
+			options: [
+				{ name: 'Header (Datto default)', value: 'header' },
+				{ name: 'Body', value: 'body' },
+			],
 		},
 	];
 

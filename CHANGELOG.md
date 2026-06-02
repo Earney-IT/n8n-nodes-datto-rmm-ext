@@ -1,3 +1,19 @@
+## 0.1.3 — 2026-06-02
+
+### Fixed
+
+- **Hidden credential defaults weren't being persisted on save.** When extending
+  `oAuth2Api`, hidden field overrides (`grantType`, `clientId`, `clientSecret`,
+  `scope`, `authentication`) are stripped out of the saved credential data —
+  the n8n public-API schema explicitly excludes them. At OAuth-fetch time the
+  helper then had no grant type / no client creds and threw "Unable to sign
+  without access token".
+- Made the OAuth bits **visible** fields with their Datto-required defaults
+  pre-filled. You should not change them; they're now persisted on save so
+  n8n's OAuth helper has everything it needs to fetch the password-grant token.
+- Credential UX is now ~7 visible fields instead of 4. The defaults handle
+  everything except API URL, Access Token URL, API Key, API Secret.
+
 ## 0.1.2 — 2026-06-02
 
 ### Fixed
