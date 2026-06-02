@@ -140,7 +140,7 @@ async function upsertSiteVariable(
 	const created = (await dattoApiRequest.call(
 		this,
 		'PUT',
-		`/api/v2/site/${encodeURIComponent(siteUid)}/variables`,
+		`/api/v2/site/${encodeURIComponent(siteUid)}/variable`,
 		{ name, value, hidden },
 	)) as IDataObject;
 	return { action: 'created', name, value, response: created };

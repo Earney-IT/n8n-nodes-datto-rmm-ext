@@ -54,7 +54,7 @@ export const siteVariable: ResourceDescriptor = {
 			action: 'Create a site variable',
 			description: 'Create a new site-scoped variable. Datto rejects creation when a variable with the same name already exists on the site — use "Upsert" for idempotent automations.',
 			method: 'PUT',
-			endpoint: '/api/v2/site/{siteUid}/variables',
+			endpoint: '/api/v2/site/{siteUid}/variable',
 			shape: 'object',
 			fields: [
 				{
@@ -137,7 +137,7 @@ export const siteVariable: ResourceDescriptor = {
 			action: 'Upsert a site variable (create or update by name)',
 			description: 'Create a new record, or update the current one if it already exists (upsert)',
 			method: 'POST',
-			endpoint: '/api/v2/site/{siteUid}/variables',
+			endpoint: '/api/v2/site/{siteUid}/variable',
 			// Marker shape — engine routes this to a special handler below.
 			shape: 'object',
 			fields: [

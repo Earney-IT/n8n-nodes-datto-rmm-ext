@@ -1,3 +1,9 @@
+## 0.1.6 — 2026-06-02
+
+### Fixed
+
+- The 0.1.5 endpoint fix over-applied — it changed BOTH the list endpoint AND the create endpoint to plural `/variables`. Datto's API actually wants the list at plural `/variables` BUT the create endpoint at singular `/variable` (PUT). With 0.1.5, the list worked but `PUT /variables` returned 405 "Method not allowed" so create-vs-update never fired. Now: GET list → `/variables`, PUT create → `/variable`, POST/DELETE single → `/variable/{id}`. Verified against the live concord-api response.
+
 ## 0.1.5 — 2026-06-02
 
 ### Fixed
