@@ -1,3 +1,15 @@
+## 0.1.4 — 2026-06-02
+
+### Breaking
+
+- **Credential type renamed** from `dattoRmmExtendedOAuth2Api` to `dattoRmmExtApi`. Delete any previously-saved credential and create a fresh one.
+- **Credential surface dropped from 7 fields to 3.** You now only enter API URL, API Key, API Secret.
+
+### Fixed
+
+- **The whole `extends: ['oAuth2Api']` approach was wrong.** n8n's OAuth2 helper does NOT auto-fetch tokens for `passwordCredentials` grant type — only for `clientCredentials`. The fallback path produced "Unable to sign without access token" because the cached `oauthTokenData` was never populated. Confirmed by reading n8n-core's `request-helper-functions.js:requestOAuth2()` — there's no `if (grantType === 'passwordCredentials')` branch.
+- Rewrote the credential to use n8n's `preAuthentication` hook instead (same pattern Metabase / Zscaler / Venafi credentials use). The hook does the Datto password-grant token exchange itself; n8n then caches the token in the credential's `sessionToken` field with `expirable: true` and re-runs the hook when expired or on 401.
+
 ## 0.1.3 — 2026-06-02
 
 ### Fixed

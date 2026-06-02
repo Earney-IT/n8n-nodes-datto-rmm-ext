@@ -32,7 +32,7 @@ export class DattoRmmExtended implements INodeType {
 		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
-				name: 'dattoRmmExtendedOAuth2Api',
+				name: 'dattoRmmExtApi',
 				required: true,
 			},
 		],

@@ -32,7 +32,7 @@ export async function dattoApiRequest(
 	body: IDataObject | undefined = undefined,
 	qs: IDataObject = {},
 ): Promise<unknown> {
-	const creds = await this.getCredentials('dattoRmmExtendedOAuth2Api');
+	const creds = await this.getCredentials('dattoRmmExtApi');
 	const apiUrl = String(creds.apiUrl ?? '').replace(/\/+$/, '');
 	if (!apiUrl) {
 		throw new NodeOperationError(
@@ -59,7 +59,7 @@ export async function dattoApiRequest(
 	try {
 		return await this.helpers.httpRequestWithAuthentication.call(
 			this,
-			'dattoRmmExtendedOAuth2Api',
+			'dattoRmmExtApi',
 			options,
 		);
 	} catch (error) {
