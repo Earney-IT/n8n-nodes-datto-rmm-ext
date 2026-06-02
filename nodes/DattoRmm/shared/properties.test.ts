@@ -45,6 +45,18 @@ test('optional fields collected into per-operation Additional Fields', () => {
   expect(optNames).not.toContain('name');
 });
 
+test('siteUid is NOT rendered for site.create (no UID exists yet)', () => {
+  const siteUid = byName('siteUid').find((p) => shows(p, 'site', 'create'));
+  expect(siteUid).toBeUndefined();
+});
+
+test('siteUid IS rendered for site.update + site.get + site.getDevices', () => {
+  for (const op of ['update', 'get', 'getDevices', 'getOpenAlerts', 'getResolvedAlerts', 'getAudit']) {
+    const siteUid = byName('siteUid').find((p) => shows(p, 'site', op));
+    expect({ op, hasSiteUid: Boolean(siteUid) }).toEqual({ op, hasSiteUid: true });
+  }
+});
+
 test('boolean hidden field is in collection for siteVariable.create', () => {
   const af = byName('additionalFields').find((p) => shows(p, 'siteVariable', 'create'));
   expect(af).toBeDefined();

@@ -16,7 +16,7 @@ export const site: ResourceDescriptor = {
 	value: 'site',
 	name: 'Site',
 	description: 'Datto RMM sites (customers): CRUD, devices, alerts, audit, variables',
-	fields: [siteUid],
+	fields: [],
 	operations: [
 		{
 			value: 'get',
@@ -26,6 +26,7 @@ export const site: ResourceDescriptor = {
 			method: 'GET',
 			endpoint: '/api/v2/site/{siteUid}',
 			shape: 'object',
+			fields: [siteUid],
 		},
 		{
 			value: 'getDevices',
@@ -36,6 +37,7 @@ export const site: ResourceDescriptor = {
 			endpoint: '/api/v2/site/{siteUid}/devices',
 			shape: 'paginated',
 			listKey: 'devices',
+			fields: [siteUid],
 		},
 		{
 			value: 'getOpenAlerts',
@@ -46,6 +48,7 @@ export const site: ResourceDescriptor = {
 			endpoint: '/api/v2/site/{siteUid}/alerts/open',
 			shape: 'paginated',
 			listKey: 'alerts',
+			fields: [siteUid],
 		},
 		{
 			value: 'getResolvedAlerts',
@@ -56,6 +59,7 @@ export const site: ResourceDescriptor = {
 			endpoint: '/api/v2/site/{siteUid}/alerts/resolved',
 			shape: 'paginated',
 			listKey: 'alerts',
+			fields: [siteUid],
 		},
 		{
 			value: 'getAudit',
@@ -66,6 +70,7 @@ export const site: ResourceDescriptor = {
 			endpoint: '/api/v2/site/{siteUid}/audit',
 			shape: 'paginated',
 			listKey: 'auditEntries',
+			fields: [siteUid],
 		},
 		{
 			value: 'create',
@@ -128,6 +133,7 @@ export const site: ResourceDescriptor = {
 			endpoint: '/api/v2/site/{siteUid}',
 			shape: 'object',
 			fields: [
+				siteUid,
 				{
 					displayName: 'Site Name',
 					name: 'name',

@@ -1,3 +1,9 @@
+## 0.1.8 — 2026-06-02
+
+### Fixed
+
+- **Site → Create showed a redundant required `Site Name or ID` field.** The `siteUid` field was declared at the resource level in `site.ts`, so the properties generator rendered it for every site operation including `create` — where creating a site obviously has no UID yet. Moved `siteUid` out of resource-level fields and into each operation's `fields` array (except `create`, which doesn't need it). The Site → Create form now shows only the new-site fields (Site Name + optional description/notes/auto-join/splashtop).
+
 ## 0.1.7 — 2026-06-02
 
 ### Fixed
